@@ -1,18 +1,10 @@
--- --------------------------------------------------------
--- Хост:                         127.0.0.1
--- Server version:               5.5.53 - MySQL Community Server (GPL)
--- Server OS:                    Win32
--- HeidiSQL Версия:              9.3.0.4998
--- --------------------------------------------------------
+SET FOREIGN_KEY_CHECKS=0;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8mb4 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-
--- Dumping structure for table characters.auction
+-- ----------------------------
+-- Table structure for auction
+-- ----------------------------
 DROP TABLE IF EXISTS `auction`;
-CREATE TABLE IF NOT EXISTS `auction` (
+CREATE TABLE `auction` (
   `id` int(11) unsigned NOT NULL DEFAULT '0',
   `houseid` int(11) unsigned NOT NULL DEFAULT '0',
   `itemguid` int(11) unsigned NOT NULL DEFAULT '0',
@@ -28,24 +20,22 @@ CREATE TABLE IF NOT EXISTS `auction` (
   UNIQUE KEY `key_item_guid` (`itemguid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.bugreport
+-- ----------------------------
+-- Table structure for bugreport
+-- ----------------------------
 DROP TABLE IF EXISTS `bugreport`;
-CREATE TABLE IF NOT EXISTS `bugreport` (
+CREATE TABLE `bugreport` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifier',
   `type` longtext NOT NULL,
   `content` longtext NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Debug System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.bugreports
+-- ----------------------------
+-- Table structure for bugreports
+-- ----------------------------
 DROP TABLE IF EXISTS `bugreports`;
-CREATE TABLE IF NOT EXISTS `bugreports` (
+CREATE TABLE `bugreports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `reportTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `playerGuid` int(11) DEFAULT NULL,
@@ -62,23 +52,21 @@ CREATE TABLE IF NOT EXISTS `bugreports` (
   KEY `idx_id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.census
+-- ----------------------------
+-- Table structure for census
+-- ----------------------------
 DROP TABLE IF EXISTS `census`;
-CREATE TABLE IF NOT EXISTS `census` (
+CREATE TABLE `census` (
   `time` datetime DEFAULT NULL,
   `race` int(11) DEFAULT NULL,
   `onlineCount` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.characters
+-- ----------------------------
+-- Table structure for characters
+-- ----------------------------
 DROP TABLE IF EXISTS `characters`;
-CREATE TABLE IF NOT EXISTS `characters` (
+CREATE TABLE `characters` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `account` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Account Identifier',
   `name` varchar(12) NOT NULL DEFAULT '',
@@ -148,32 +136,29 @@ CREATE TABLE IF NOT EXISTS `characters` (
   KEY `idx_name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.characters_guid_delete
+-- ----------------------------
+-- Table structure for characters_guid_delete
+-- ----------------------------
 DROP TABLE IF EXISTS `characters_guid_delete`;
-CREATE TABLE IF NOT EXISTS `characters_guid_delete` (
+CREATE TABLE `characters_guid_delete` (
   `guid` int(11) DEFAULT NULL,
   UNIQUE KEY `key_guid` (`guid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.characters_item_delete
+-- ----------------------------
+-- Table structure for characters_item_delete
+-- ----------------------------
 DROP TABLE IF EXISTS `characters_item_delete`;
-CREATE TABLE IF NOT EXISTS `characters_item_delete` (
+CREATE TABLE `characters_item_delete` (
   `entry` int(11) DEFAULT NULL,
   UNIQUE KEY `key_entry` (`entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_action
+-- ----------------------------
+-- Table structure for character_action
+-- ----------------------------
 DROP TABLE IF EXISTS `character_action`;
-CREATE TABLE IF NOT EXISTS `character_action` (
+CREATE TABLE `character_action` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `button` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `action` int(11) unsigned NOT NULL DEFAULT '0',
@@ -181,12 +166,11 @@ CREATE TABLE IF NOT EXISTS `character_action` (
   PRIMARY KEY (`guid`,`button`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_aura
+-- ----------------------------
+-- Table structure for character_aura
+-- ----------------------------
 DROP TABLE IF EXISTS `character_aura`;
-CREATE TABLE IF NOT EXISTS `character_aura` (
+CREATE TABLE `character_aura` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `caster_guid` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT 'Full Global Unique Identifier',
   `item_guid` int(11) unsigned NOT NULL DEFAULT '0',
@@ -205,12 +189,11 @@ CREATE TABLE IF NOT EXISTS `character_aura` (
   PRIMARY KEY (`guid`,`caster_guid`,`item_guid`,`spell`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_battleground_data
+-- ----------------------------
+-- Table structure for character_battleground_data
+-- ----------------------------
 DROP TABLE IF EXISTS `character_battleground_data`;
-CREATE TABLE IF NOT EXISTS `character_battleground_data` (
+CREATE TABLE `character_battleground_data` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `instance_id` int(11) unsigned NOT NULL DEFAULT '0',
   `team` int(11) unsigned NOT NULL DEFAULT '0',
@@ -222,12 +205,11 @@ CREATE TABLE IF NOT EXISTS `character_battleground_data` (
   PRIMARY KEY (`guid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_bgqueue
+-- ----------------------------
+-- Table structure for character_bgqueue
+-- ----------------------------
 DROP TABLE IF EXISTS `character_bgqueue`;
-CREATE TABLE IF NOT EXISTS `character_bgqueue` (
+CREATE TABLE `character_bgqueue` (
   `PlayerGUID` int(11) NOT NULL DEFAULT '0',
   `playerName` varchar(12) CHARACTER SET latin1 NOT NULL,
   `playerIP` int(11) NOT NULL,
@@ -237,21 +219,31 @@ CREATE TABLE IF NOT EXISTS `character_bgqueue` (
   PRIMARY KEY (`PlayerGUID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- ----------------------------
+-- Table structure for character_deleted_items
+-- ----------------------------
+DROP TABLE IF EXISTS `character_deleted_items`;
+CREATE TABLE `character_deleted_items` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `player_guid` int(11) unsigned NOT NULL DEFAULT '0',
+  `item_entry` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `stack_count` mediumint(8) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
--- Dumping structure for table characters.character_duplicate_account
+-- ----------------------------
+-- Table structure for character_duplicate_account
+-- ----------------------------
 DROP TABLE IF EXISTS `character_duplicate_account`;
-CREATE TABLE IF NOT EXISTS `character_duplicate_account` (
+CREATE TABLE `character_duplicate_account` (
   `account` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_gifts
+-- ----------------------------
+-- Table structure for character_gifts
+-- ----------------------------
 DROP TABLE IF EXISTS `character_gifts`;
-CREATE TABLE IF NOT EXISTS `character_gifts` (
+CREATE TABLE `character_gifts` (
   `guid` int(20) unsigned NOT NULL DEFAULT '0',
   `item_guid` int(11) unsigned NOT NULL DEFAULT '0',
   `entry` int(20) unsigned NOT NULL DEFAULT '0',
@@ -260,12 +252,11 @@ CREATE TABLE IF NOT EXISTS `character_gifts` (
   KEY `idx_guid` (`guid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_homebind
+-- ----------------------------
+-- Table structure for character_homebind
+-- ----------------------------
 DROP TABLE IF EXISTS `character_homebind`;
-CREATE TABLE IF NOT EXISTS `character_homebind` (
+CREATE TABLE `character_homebind` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `map` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Map Identifier',
   `zone` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Zone Identifier',
@@ -275,12 +266,11 @@ CREATE TABLE IF NOT EXISTS `character_homebind` (
   PRIMARY KEY (`guid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_honor_cp
+-- ----------------------------
+-- Table structure for character_honor_cp
+-- ----------------------------
 DROP TABLE IF EXISTS `character_honor_cp`;
-CREATE TABLE IF NOT EXISTS `character_honor_cp` (
+CREATE TABLE `character_honor_cp` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `victimType` tinyint(3) unsigned NOT NULL DEFAULT '4',
   `victim` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Creature / Player Identifier',
@@ -290,12 +280,11 @@ CREATE TABLE IF NOT EXISTS `character_honor_cp` (
   KEY `idx_guid` (`guid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_instance
+-- ----------------------------
+-- Table structure for character_instance
+-- ----------------------------
 DROP TABLE IF EXISTS `character_instance`;
-CREATE TABLE IF NOT EXISTS `character_instance` (
+CREATE TABLE `character_instance` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0',
   `instance` int(11) unsigned NOT NULL DEFAULT '0',
   `permanent` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -303,12 +292,11 @@ CREATE TABLE IF NOT EXISTS `character_instance` (
   KEY `idx_instance` (`instance`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_inventory
+-- ----------------------------
+-- Table structure for character_inventory
+-- ----------------------------
 DROP TABLE IF EXISTS `character_inventory`;
-CREATE TABLE IF NOT EXISTS `character_inventory` (
+CREATE TABLE `character_inventory` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `bag` int(11) unsigned NOT NULL DEFAULT '0',
   `slot` tinyint(3) unsigned NOT NULL DEFAULT '0',
@@ -318,12 +306,11 @@ CREATE TABLE IF NOT EXISTS `character_inventory` (
   KEY `idx_guid` (`guid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_pet
+-- ----------------------------
+-- Table structure for character_pet
+-- ----------------------------
 DROP TABLE IF EXISTS `character_pet`;
-CREATE TABLE IF NOT EXISTS `character_pet` (
+CREATE TABLE `character_pet` (
   `id` int(11) unsigned NOT NULL DEFAULT '0',
   `entry` int(11) unsigned NOT NULL DEFAULT '0',
   `owner` int(11) unsigned NOT NULL DEFAULT '0',
@@ -351,12 +338,11 @@ CREATE TABLE IF NOT EXISTS `character_pet` (
   KEY `idx_owner` (`owner`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Pet System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_queststatus
+-- ----------------------------
+-- Table structure for character_queststatus
+-- ----------------------------
 DROP TABLE IF EXISTS `character_queststatus`;
-CREATE TABLE IF NOT EXISTS `character_queststatus` (
+CREATE TABLE `character_queststatus` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `quest` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Quest Identifier',
   `status` int(11) unsigned NOT NULL DEFAULT '0',
@@ -375,12 +361,11 @@ CREATE TABLE IF NOT EXISTS `character_queststatus` (
   PRIMARY KEY (`guid`,`quest`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_reputation
+-- ----------------------------
+-- Table structure for character_reputation
+-- ----------------------------
 DROP TABLE IF EXISTS `character_reputation`;
-CREATE TABLE IF NOT EXISTS `character_reputation` (
+CREATE TABLE `character_reputation` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `faction` int(11) unsigned NOT NULL DEFAULT '0',
   `standing` int(11) NOT NULL DEFAULT '0',
@@ -388,12 +373,11 @@ CREATE TABLE IF NOT EXISTS `character_reputation` (
   PRIMARY KEY (`guid`,`faction`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_skills
+-- ----------------------------
+-- Table structure for character_skills
+-- ----------------------------
 DROP TABLE IF EXISTS `character_skills`;
-CREATE TABLE IF NOT EXISTS `character_skills` (
+CREATE TABLE `character_skills` (
   `guid` int(11) unsigned NOT NULL COMMENT 'Global Unique Identifier',
   `skill` mediumint(9) unsigned NOT NULL,
   `value` mediumint(9) unsigned NOT NULL,
@@ -401,12 +385,11 @@ CREATE TABLE IF NOT EXISTS `character_skills` (
   PRIMARY KEY (`guid`,`skill`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_social
+-- ----------------------------
+-- Table structure for character_social
+-- ----------------------------
 DROP TABLE IF EXISTS `character_social`;
-CREATE TABLE IF NOT EXISTS `character_social` (
+CREATE TABLE `character_social` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Character Global Unique Identifier',
   `friend` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Friend Global Unique Identifier',
   `flags` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT 'Friend Flags',
@@ -417,12 +400,11 @@ CREATE TABLE IF NOT EXISTS `character_social` (
   KEY `idx_friend_flags` (`friend`,`flags`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_spell
+-- ----------------------------
+-- Table structure for character_spell
+-- ----------------------------
 DROP TABLE IF EXISTS `character_spell`;
-CREATE TABLE IF NOT EXISTS `character_spell` (
+CREATE TABLE `character_spell` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `spell` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Spell Identifier',
   `active` tinyint(3) unsigned NOT NULL DEFAULT '1',
@@ -431,12 +413,11 @@ CREATE TABLE IF NOT EXISTS `character_spell` (
   KEY `idx_spell` (`spell`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_spell_cooldown
+-- ----------------------------
+-- Table structure for character_spell_cooldown
+-- ----------------------------
 DROP TABLE IF EXISTS `character_spell_cooldown`;
-CREATE TABLE IF NOT EXISTS `character_spell_cooldown` (
+CREATE TABLE `character_spell_cooldown` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier, Low part',
   `spell` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Spell Identifier',
   `item` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Item Identifier',
@@ -445,12 +426,11 @@ CREATE TABLE IF NOT EXISTS `character_spell_cooldown` (
   PRIMARY KEY (`guid`,`spell`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_stats
+-- ----------------------------
+-- Table structure for character_stats
+-- ----------------------------
 DROP TABLE IF EXISTS `character_stats`;
-CREATE TABLE IF NOT EXISTS `character_stats` (
+CREATE TABLE `character_stats` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier, Low part',
   `maxhealth` int(10) unsigned NOT NULL DEFAULT '0',
   `maxpower1` int(10) unsigned NOT NULL DEFAULT '0',
@@ -482,12 +462,11 @@ CREATE TABLE IF NOT EXISTS `character_stats` (
   PRIMARY KEY (`guid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_ticket
+-- ----------------------------
+-- Table structure for character_ticket
+-- ----------------------------
 DROP TABLE IF EXISTS `character_ticket`;
-CREATE TABLE IF NOT EXISTS `character_ticket` (
+CREATE TABLE `character_ticket` (
   `ticket_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `guid` int(11) unsigned NOT NULL DEFAULT '0',
   `ticket_text` text,
@@ -496,12 +475,11 @@ CREATE TABLE IF NOT EXISTS `character_ticket` (
   PRIMARY KEY (`ticket_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.character_tutorial
+-- ----------------------------
+-- Table structure for character_tutorial
+-- ----------------------------
 DROP TABLE IF EXISTS `character_tutorial`;
-CREATE TABLE IF NOT EXISTS `character_tutorial` (
+CREATE TABLE `character_tutorial` (
   `account` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Account Identifier',
   `tut0` int(11) unsigned NOT NULL DEFAULT '0',
   `tut1` int(11) unsigned NOT NULL DEFAULT '0',
@@ -514,12 +492,11 @@ CREATE TABLE IF NOT EXISTS `character_tutorial` (
   PRIMARY KEY (`account`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.corpse
+-- ----------------------------
+-- Table structure for corpse
+-- ----------------------------
 DROP TABLE IF EXISTS `corpse`;
-CREATE TABLE IF NOT EXISTS `corpse` (
+CREATE TABLE `corpse` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `player` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Character Global Unique Identifier',
   `position_x` float NOT NULL DEFAULT '0',
@@ -537,12 +514,11 @@ CREATE TABLE IF NOT EXISTS `corpse` (
   KEY `idx_time` (`time`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Death System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.creature_respawn
+-- ----------------------------
+-- Table structure for creature_respawn
+-- ----------------------------
 DROP TABLE IF EXISTS `creature_respawn`;
-CREATE TABLE IF NOT EXISTS `creature_respawn` (
+CREATE TABLE `creature_respawn` (
   `guid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `respawntime` bigint(20) NOT NULL DEFAULT '0',
   `instance` mediumint(8) unsigned NOT NULL DEFAULT '0',
@@ -551,12 +527,11 @@ CREATE TABLE IF NOT EXISTS `creature_respawn` (
   KEY `idx_instance` (`instance`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Grid Loading System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.gameobject_respawn
+-- ----------------------------
+-- Table structure for gameobject_respawn
+-- ----------------------------
 DROP TABLE IF EXISTS `gameobject_respawn`;
-CREATE TABLE IF NOT EXISTS `gameobject_respawn` (
+CREATE TABLE `gameobject_respawn` (
   `guid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `respawntime` bigint(20) NOT NULL DEFAULT '0',
   `instance` mediumint(8) unsigned NOT NULL DEFAULT '0',
@@ -565,22 +540,20 @@ CREATE TABLE IF NOT EXISTS `gameobject_respawn` (
   KEY `idx_instance` (`instance`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Grid Loading System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.game_event_status
+-- ----------------------------
+-- Table structure for game_event_status
+-- ----------------------------
 DROP TABLE IF EXISTS `game_event_status`;
-CREATE TABLE IF NOT EXISTS `game_event_status` (
+CREATE TABLE `game_event_status` (
   `event` smallint(6) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`event`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Game event system';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.gm_subsurveys
+-- ----------------------------
+-- Table structure for gm_subsurveys
+-- ----------------------------
 DROP TABLE IF EXISTS `gm_subsurveys`;
-CREATE TABLE IF NOT EXISTS `gm_subsurveys` (
+CREATE TABLE `gm_subsurveys` (
   `surveyId` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `subsurveyId` int(10) unsigned NOT NULL DEFAULT '0',
   `rank` int(10) unsigned NOT NULL DEFAULT '0',
@@ -588,12 +561,11 @@ CREATE TABLE IF NOT EXISTS `gm_subsurveys` (
   PRIMARY KEY (`surveyId`,`subsurveyId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.gm_surveys
+-- ----------------------------
+-- Table structure for gm_surveys
+-- ----------------------------
 DROP TABLE IF EXISTS `gm_surveys`;
-CREATE TABLE IF NOT EXISTS `gm_surveys` (
+CREATE TABLE `gm_surveys` (
   `surveyId` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `guid` int(10) unsigned NOT NULL DEFAULT '0',
   `mainSurvey` int(10) unsigned NOT NULL DEFAULT '0',
@@ -602,12 +574,11 @@ CREATE TABLE IF NOT EXISTS `gm_surveys` (
   PRIMARY KEY (`surveyId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.gm_tickets
+-- ----------------------------
+-- Table structure for gm_tickets
+-- ----------------------------
 DROP TABLE IF EXISTS `gm_tickets`;
-CREATE TABLE IF NOT EXISTS `gm_tickets` (
+CREATE TABLE `gm_tickets` (
   `ticketId` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `guid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier of ticket creator',
   `name` varchar(12) NOT NULL COMMENT 'Name of ticket creator',
@@ -631,12 +602,11 @@ CREATE TABLE IF NOT EXISTS `gm_tickets` (
   PRIMARY KEY (`ticketId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Player System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.groups
+-- ----------------------------
+-- Table structure for groups
+-- ----------------------------
 DROP TABLE IF EXISTS `groups`;
-CREATE TABLE IF NOT EXISTS `groups` (
+CREATE TABLE `groups` (
   `groupId` int(11) unsigned NOT NULL,
   `leaderGuid` int(11) unsigned NOT NULL,
   `mainTank` int(11) unsigned NOT NULL,
@@ -657,12 +627,11 @@ CREATE TABLE IF NOT EXISTS `groups` (
   UNIQUE KEY `key_leaderGuid` (`leaderGuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Groups';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.group_instance
+-- ----------------------------
+-- Table structure for group_instance
+-- ----------------------------
 DROP TABLE IF EXISTS `group_instance`;
-CREATE TABLE IF NOT EXISTS `group_instance` (
+CREATE TABLE `group_instance` (
   `leaderGuid` int(11) unsigned NOT NULL DEFAULT '0',
   `instance` int(11) unsigned NOT NULL DEFAULT '0',
   `permanent` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -670,12 +639,11 @@ CREATE TABLE IF NOT EXISTS `group_instance` (
   KEY `idx_instance` (`instance`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.group_member
+-- ----------------------------
+-- Table structure for group_member
+-- ----------------------------
 DROP TABLE IF EXISTS `group_member`;
-CREATE TABLE IF NOT EXISTS `group_member` (
+CREATE TABLE `group_member` (
   `groupId` int(11) unsigned NOT NULL,
   `memberGuid` int(11) unsigned NOT NULL,
   `assistant` tinyint(1) unsigned NOT NULL,
@@ -684,12 +652,11 @@ CREATE TABLE IF NOT EXISTS `group_member` (
   KEY `idx_memberGuid` (`memberGuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Groups';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.guild
+-- ----------------------------
+-- Table structure for guild
+-- ----------------------------
 DROP TABLE IF EXISTS `guild`;
-CREATE TABLE IF NOT EXISTS `guild` (
+CREATE TABLE `guild` (
   `guildid` int(6) unsigned NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL DEFAULT '',
   `leaderguid` int(6) unsigned NOT NULL DEFAULT '0',
@@ -704,12 +671,11 @@ CREATE TABLE IF NOT EXISTS `guild` (
   PRIMARY KEY (`guildid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Guild System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.guild_eventlog
+-- ----------------------------
+-- Table structure for guild_eventlog
+-- ----------------------------
 DROP TABLE IF EXISTS `guild_eventlog`;
-CREATE TABLE IF NOT EXISTS `guild_eventlog` (
+CREATE TABLE `guild_eventlog` (
   `guildid` int(11) NOT NULL COMMENT 'Guild Identificator',
   `LogGuid` int(11) NOT NULL COMMENT 'Log record identificator - auxiliary column',
   `EventType` tinyint(1) NOT NULL COMMENT 'Event type',
@@ -723,12 +689,11 @@ CREATE TABLE IF NOT EXISTS `guild_eventlog` (
   KEY `idx_LogGuid` (`LogGuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Guild Eventlog';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.guild_member
+-- ----------------------------
+-- Table structure for guild_member
+-- ----------------------------
 DROP TABLE IF EXISTS `guild_member`;
-CREATE TABLE IF NOT EXISTS `guild_member` (
+CREATE TABLE `guild_member` (
   `guildid` int(6) unsigned NOT NULL DEFAULT '0',
   `guid` int(11) unsigned NOT NULL DEFAULT '0',
   `rank` tinyint(2) unsigned NOT NULL DEFAULT '0',
@@ -739,12 +704,11 @@ CREATE TABLE IF NOT EXISTS `guild_member` (
   KEY `idx_guildid_rank` (`guildid`,`rank`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Guild System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.guild_rank
+-- ----------------------------
+-- Table structure for guild_rank
+-- ----------------------------
 DROP TABLE IF EXISTS `guild_rank`;
-CREATE TABLE IF NOT EXISTS `guild_rank` (
+CREATE TABLE `guild_rank` (
   `guildid` int(6) unsigned NOT NULL DEFAULT '0',
   `rid` int(11) unsigned NOT NULL,
   `rname` varchar(255) NOT NULL DEFAULT '',
@@ -753,12 +717,11 @@ CREATE TABLE IF NOT EXISTS `guild_rank` (
   KEY `idx_rid` (`rid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Guild System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.instance
+-- ----------------------------
+-- Table structure for instance
+-- ----------------------------
 DROP TABLE IF EXISTS `instance`;
-CREATE TABLE IF NOT EXISTS `instance` (
+CREATE TABLE `instance` (
   `id` int(11) unsigned NOT NULL DEFAULT '0',
   `map` int(11) unsigned NOT NULL DEFAULT '0',
   `resettime` bigint(40) NOT NULL DEFAULT '0',
@@ -768,23 +731,21 @@ CREATE TABLE IF NOT EXISTS `instance` (
   KEY `idx_resettime` (`resettime`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.instance_reset
+-- ----------------------------
+-- Table structure for instance_reset
+-- ----------------------------
 DROP TABLE IF EXISTS `instance_reset`;
-CREATE TABLE IF NOT EXISTS `instance_reset` (
+CREATE TABLE `instance_reset` (
   `mapid` int(11) unsigned NOT NULL DEFAULT '0',
   `resettime` bigint(40) NOT NULL DEFAULT '0',
   PRIMARY KEY (`mapid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.item_instance
+-- ----------------------------
+-- Table structure for item_instance
+-- ----------------------------
 DROP TABLE IF EXISTS `item_instance`;
-CREATE TABLE IF NOT EXISTS `item_instance` (
+CREATE TABLE `item_instance` (
   `guid` int(10) unsigned NOT NULL DEFAULT '0',
   `itemEntry` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `owner_guid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -797,19 +758,18 @@ CREATE TABLE IF NOT EXISTS `item_instance` (
   `enchantments` text NOT NULL,
   `randomPropertyId` smallint(5) NOT NULL DEFAULT '0',
   `durability` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `text` int(10) NOT NULL DEFAULT '0',
+  `text` int(10) unsigned NOT NULL DEFAULT '0',
   `generated_loot` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`guid`),
   KEY `idx_owner_guid` (`owner_guid`),
   KEY `idx_itemEntry` (`itemEntry`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Item System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.item_loot
+-- ----------------------------
+-- Table structure for item_loot
+-- ----------------------------
 DROP TABLE IF EXISTS `item_loot`;
-CREATE TABLE IF NOT EXISTS `item_loot` (
+CREATE TABLE `item_loot` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0',
   `owner_guid` int(11) unsigned NOT NULL DEFAULT '0',
   `itemid` int(11) unsigned NOT NULL DEFAULT '0',
@@ -819,23 +779,21 @@ CREATE TABLE IF NOT EXISTS `item_loot` (
   KEY `idx_owner_guid` (`owner_guid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Item System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.item_text
+-- ----------------------------
+-- Table structure for item_text
+-- ----------------------------
 DROP TABLE IF EXISTS `item_text`;
-CREATE TABLE IF NOT EXISTS `item_text` (
+CREATE TABLE `item_text` (
   `id` int(11) unsigned NOT NULL DEFAULT '0',
   `text` longtext,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Item System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.mail
+-- ----------------------------
+-- Table structure for mail
+-- ----------------------------
 DROP TABLE IF EXISTS `mail`;
-CREATE TABLE IF NOT EXISTS `mail` (
+CREATE TABLE `mail` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identifier',
   `messageType` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `stationery` tinyint(3) NOT NULL DEFAULT '41',
@@ -854,12 +812,11 @@ CREATE TABLE IF NOT EXISTS `mail` (
   KEY `idx_receiver` (`receiver`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Mail System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.mail_items
+-- ----------------------------
+-- Table structure for mail_items
+-- ----------------------------
 DROP TABLE IF EXISTS `mail_items`;
-CREATE TABLE IF NOT EXISTS `mail_items` (
+CREATE TABLE `mail_items` (
   `mail_id` int(11) unsigned NOT NULL DEFAULT '0',
   `item_guid` int(11) unsigned NOT NULL DEFAULT '0',
   `item_template` int(11) unsigned NOT NULL DEFAULT '0',
@@ -869,22 +826,20 @@ CREATE TABLE IF NOT EXISTS `mail_items` (
   KEY `idx_item_guid` (`item_guid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.migrations
+-- ----------------------------
+-- Table structure for migrations
+-- ----------------------------
 DROP TABLE IF EXISTS `migrations`;
-CREATE TABLE IF NOT EXISTS `migrations` (
+CREATE TABLE `migrations` (
   `id` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.petition
+-- ----------------------------
+-- Table structure for petition
+-- ----------------------------
 DROP TABLE IF EXISTS `petition`;
-CREATE TABLE IF NOT EXISTS `petition` (
+CREATE TABLE `petition` (
   `ownerguid` int(10) unsigned NOT NULL,
   `petitionguid` int(10) unsigned DEFAULT '0',
   `name` varchar(255) NOT NULL DEFAULT '',
@@ -892,12 +847,11 @@ CREATE TABLE IF NOT EXISTS `petition` (
   UNIQUE KEY `key_ownerguid_petitionguid` (`ownerguid`,`petitionguid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Guild System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.petition_sign
+-- ----------------------------
+-- Table structure for petition_sign
+-- ----------------------------
 DROP TABLE IF EXISTS `petition_sign`;
-CREATE TABLE IF NOT EXISTS `petition_sign` (
+CREATE TABLE `petition_sign` (
   `ownerguid` int(10) unsigned NOT NULL,
   `petitionguid` int(11) unsigned NOT NULL DEFAULT '0',
   `playerguid` int(11) unsigned NOT NULL DEFAULT '0',
@@ -907,12 +861,11 @@ CREATE TABLE IF NOT EXISTS `petition_sign` (
   KEY `idx_ownerguid` (`ownerguid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Guild System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.pet_aura
+-- ----------------------------
+-- Table structure for pet_aura
+-- ----------------------------
 DROP TABLE IF EXISTS `pet_aura`;
-CREATE TABLE IF NOT EXISTS `pet_aura` (
+CREATE TABLE `pet_aura` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `caster_guid` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT 'Full Global Unique Identifier',
   `item_guid` int(11) unsigned NOT NULL DEFAULT '0',
@@ -931,36 +884,33 @@ CREATE TABLE IF NOT EXISTS `pet_aura` (
   PRIMARY KEY (`guid`,`caster_guid`,`item_guid`,`spell`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Pet System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.pet_spell
+-- ----------------------------
+-- Table structure for pet_spell
+-- ----------------------------
 DROP TABLE IF EXISTS `pet_spell`;
-CREATE TABLE IF NOT EXISTS `pet_spell` (
+CREATE TABLE `pet_spell` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
   `spell` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Spell Identifier',
   `active` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`guid`,`spell`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Pet System';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.pet_spell_cooldown
+-- ----------------------------
+-- Table structure for pet_spell_cooldown
+-- ----------------------------
 DROP TABLE IF EXISTS `pet_spell_cooldown`;
-CREATE TABLE IF NOT EXISTS `pet_spell_cooldown` (
+CREATE TABLE `pet_spell_cooldown` (
   `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier, Low part',
   `spell` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Spell Identifier',
   `time` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`guid`,`spell`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.playerbot
+-- ----------------------------
+-- Table structure for playerbot
+-- ----------------------------
 DROP TABLE IF EXISTS `playerbot`;
-CREATE TABLE IF NOT EXISTS `playerbot` (
+CREATE TABLE `playerbot` (
   `char_guid` bigint(20) unsigned NOT NULL,
   `chance` int(10) unsigned NOT NULL DEFAULT '10',
   `comment` varchar(255) DEFAULT NULL,
@@ -968,12 +918,11 @@ CREATE TABLE IF NOT EXISTS `playerbot` (
   PRIMARY KEY (`char_guid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.saved_variables
+-- ----------------------------
+-- Table structure for saved_variables
+-- ----------------------------
 DROP TABLE IF EXISTS `saved_variables`;
-CREATE TABLE IF NOT EXISTS `saved_variables` (
+CREATE TABLE `saved_variables` (
   `key` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `cleaning_flags` int(11) unsigned NOT NULL DEFAULT '0',
   `lastHonorMaintenanceDay` int(11) unsigned NOT NULL DEFAULT '0',
@@ -982,30 +931,23 @@ CREATE TABLE IF NOT EXISTS `saved_variables` (
   PRIMARY KEY (`key`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Variable Saves';
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.world
+-- ----------------------------
+-- Table structure for world
+-- ----------------------------
 DROP TABLE IF EXISTS `world`;
-CREATE TABLE IF NOT EXISTS `world` (
+CREATE TABLE `world` (
   `map` int(11) unsigned NOT NULL DEFAULT '0',
   `data` longtext,
   PRIMARY KEY (`map`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
-
-
--- Dumping structure for table characters.worldstates
+-- ----------------------------
+-- Table structure for worldstates
+-- ----------------------------
 DROP TABLE IF EXISTS `worldstates`;
-CREATE TABLE IF NOT EXISTS `worldstates` (
+CREATE TABLE `worldstates` (
   `entry` int(11) DEFAULT NULL,
   `value` int(11) DEFAULT NULL,
   `comment` varchar(255) DEFAULT NULL,
   UNIQUE KEY `key_entry` (`entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
